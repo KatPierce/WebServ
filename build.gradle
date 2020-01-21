@@ -15,10 +15,6 @@ buildscript {
     }
 }
 
-task wrapper(type: Wrapper) {
-   gradleVersion = '4.6'
-}
-
 apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'org.springframework.boot'
@@ -55,4 +51,11 @@ jar {
 }
 
 
+task docker {
+  doLast {
+    exec {
+      commandLine 'docker', 'build', '.', '-t', 'opi'
+    }   
+  }
+}
 
